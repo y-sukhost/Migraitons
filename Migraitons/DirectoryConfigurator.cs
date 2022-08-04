@@ -10,7 +10,7 @@ namespace Migraitons
     {
         public static void Replace(string filePath, string oldSubstring, string newSubstring)
         {
-            //if (File.Exists(filePath) == false) return;
+            if (File.Exists(filePath) == false) return;
 
             string input = File.ReadAllText(filePath).Replace(oldSubstring, newSubstring);
 
@@ -22,6 +22,8 @@ namespace Migraitons
         }
         public static List<string> GetAllFiles(List<string> filePaths,  string path)
         {
+            if (File.Exists(path) == false) return filePaths;
+
             string[] files = Directory.GetFiles(path, "*.xml");
 
             foreach (var file in files)
