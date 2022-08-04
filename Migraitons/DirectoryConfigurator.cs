@@ -22,7 +22,8 @@ namespace Migraitons
         }
         public static List<string> GetAllFiles(List<string> filePaths,  string path)
         {
-            if (File.Exists(path) == false) return filePaths;
+            bool isExists = Directory.Exists(path);
+            if (isExists == false) return filePaths;
 
             string[] files = Directory.GetFiles(path, "*.xml");
 

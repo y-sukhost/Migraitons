@@ -1,8 +1,11 @@
 ﻿using Migraitons;
+using System.Diagnostics;
 
 //correct will be work with 
 
-string mainPath = @"D:\Desktop\Projects"; //change to your projects configs folder
+Stopwatch stopwatch = new Stopwatch();
+
+string mainPath = @"D:\Desktop\_OLD_Configs\_OLD_Configs\98"; //change to your projects configs folder
 string[] projectsPaths = Directory.GetDirectories(mainPath);
 
 for(int i = 0; i < projectsPaths.Length; i++)
@@ -15,6 +18,8 @@ foreach(var projectPath in projectsPaths)
     List<string> files = new List<string>();
     DirectoryConfigurator.GetAllFiles(files, projectPath);
     Console.WriteLine(projectPath);
+    stopwatch.Start();
+    var lastTime = stopwatch.ElapsedMilliseconds;
     foreach (var file in files)
     {
         Console.WriteLine("\t" + file);
@@ -23,9 +28,10 @@ foreach(var projectPath in projectsPaths)
         DirectoryConfigurator.Replace(file, "Poll GV", "Poll GVSr");
         DirectoryConfigurator.Replace(file, "GVar", "GVarSr");
     }
+    stopwatch.Stop();
 
-    Console.WriteLine("\tFINISHED.");
+    Console.WriteLine("\tFINISHED. Duration: " + (stopwatch.ElapsedMilliseconds - lastTime) + " ms.");
 }
 
-Console.WriteLine("All finished.");
+Console.WriteLine("All finished. Duration: " + stopwatch.ElapsedMilliseconds);
 
