@@ -2,9 +2,6 @@
 
 string[] paths = {
     @"D:\Desktop\C519 FFL\C519 FFL\Diagrams"
-    //@"D:\Desktop\98\HCM_Modules\Diagrams",
-    //@"D:\Desktop\98\Rework\Diagrams",
-    //@"D:\Desktop\98\Tesla Model Y RL\Diagrams"
  };
 
 foreach(var dirPath in paths)
